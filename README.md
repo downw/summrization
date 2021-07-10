@@ -1,5 +1,5 @@
 # summrization
-This is some summary code and model
+This is summarization code and model
 
 
 # dataset download
