@@ -53,3 +53,7 @@ summary = tokenizer.decode(output[0]).split('[SEP]')[0].replace('[CLS]', '').rep
 
 # 集成系统
 运行runningExample.py文件
+"""
+python runningExample.py
+"""
+按提示进行输入
