@@ -49,3 +49,7 @@ output = model.generate(
 summary = tokenizer.decode(output[0]).split('[SEP]')[0].replace('[CLS]', '').replace(' ', '')
 ```
 最终得到结果summary
+
+
+# 集成系统
+运行runningExample.py文件
