@@ -35,7 +35,7 @@ model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
 ```python
 sentence = 'you input sentence for summarization'
 
-input = tokenizer(sentence, max_length=max_target_length, truncation=True, return_tensors='pt')  # 对句子进行编码
+input = tokenizer(sentence, max_length=128, truncation=True, return_tensors='pt')  # 对句子进行编码
 del input['token_type_ids']
 output = model.generate(
     **input,
@@ -46,6 +46,6 @@ output = model.generate(
     max_length=100,     # 输出的最大长度
     repetition_penalty=5.0   # 重复的惩罚
 )
-summary = tokenizer.decode(output[0])
+summary = tokenizer.decode(output[0]).split('[SEP]')[0]
 ```
 最终得到结果summary
