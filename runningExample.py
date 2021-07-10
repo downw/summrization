@@ -250,9 +250,32 @@ def TextRank(sentence):
         summary = summary + originalSentenceOf[sentence].lstrip('')
     return summary
 
+def T5(text):
+    model_checkpoint = 'sunhao666/chi-sum2'
+    # 分词器采样的是T5的分词器
+    tokenizer = AutoTokenizer.from_pretrained('uer/t5-base-chinese-cluecorpussmall')
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
+    sentence = text
+    input = tokenizer(sentence, max_length=128, truncation=True, return_tensors='pt')  # 对句子进行编码
+    del input['token_type_ids']
+    output = model.generate(
+        **input,
+        do_sample=True,  # 是否抽样
+        num_beams=3,   # beam search
+        bad_words_ids=[[101], [100]],  # bad_word_ids表示这些词不会出现在结果中
+        # length_penalty=100,   # 长度的惩罚项
+        max_length=100,     # 输出的最大长度
+        repetition_penalty=5.0   # 重复的惩罚
+    )
+    summary = tokenizer.decode(output[0]).split('[SEP]')[0].replace('[CLS]', '').replace(' ', '')
+    return summary
+
+
+
+
 if __name__ == '__main__':
     text = input("请输入句子：")
-    type = str(2)
+    type = "2"
     type = input("1代表bart模型，2代表textrank方法，3代表t5模型，请输入(默认为2):")
     if type=="1":
         Bart_path = "Bart.pth" # 默认路径
@@ -260,4 +283,6 @@ if __name__ == '__main__':
         print(Bart(text))
     elif type=="2":
         print(TextRank(text))
+    elif type=="3":
+        print(T5(text))
     
