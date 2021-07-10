@@ -28,7 +28,7 @@ tokenizer = AutoTokenizer.from_pretrained('uer/t5-base-chinese-cluecorpussmall')
 读取模型
 ```python
 from transformers import AutoModelForSeq2SeqLM
-model = AutoModelForSeq2SeqLM.from_pretrained(model_self)
+model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
 ```
 
 进行文本摘要
