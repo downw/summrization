@@ -46,6 +46,6 @@ output = model.generate(
     max_length=100,     # 输出的最大长度
     repetition_penalty=5.0   # 重复的惩罚
 )
-summary = tokenizer.decode(output[0]).split('[SEP]')[0]
+summary = tokenizer.decode(output[0]).split('[SEP]')[0].replace('[CLS]', '').replace(' ', '')
 ```
 最终得到结果summary
