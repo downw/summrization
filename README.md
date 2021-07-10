@@ -13,6 +13,7 @@ This is some summary code and model
 
 # T5 model
 代码框架基于huggingface中的transformer包
+
 设定checkpoint,可从huggingface个人仓库中读取模型
 
 ```python 
