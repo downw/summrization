@@ -118,6 +118,7 @@ def create_student_by_copying_alternating_layers(
     except AttributeError:  # For t5, student.model.encoder.layers is called student.encoder.block
         copy_layers(teacher.encoder.block, student.encoder.block, e_layers_to_copy)
         copy_layers(teacher.decoder.block, student.decoder.block, d_layers_to_copy)
+    logger = logging.get_logger(__name__)
     logger.info(
         f"Copied encoder layers {e_layers_to_copy} and decoder layers {d_layers_to_copy}. Saving them to {save_path}"
     )
@@ -159,7 +160,7 @@ def generate_summary(test_samples, model):
 
 def Bart(text, Bart_path):
     tokenModel = "bert-base-chinese"
-    tokenizer = AutoTokenizer.from_pretrained(TokenModel)
+    tokenizer = AutoTokenizer.from_pretrained(tokenModel)
     model_checkpoint = "facebook/bart-large-cnn"
     if model_checkpoint in ["t5-small", "t5-base", "t5-larg", "t5-3b", "t5-11b"]:
         prefix = "summarize: "
@@ -278,9 +279,9 @@ if __name__ == '__main__':
     type = "2"
     type = input("1代表bart模型，2代表textrank方法，3代表t5模型，请输入(默认为2):")
     if type=="1":
-        Bart_path = "Bart.pth" # 默认路径
-        Bart_path = input("请输入Bart模型参数保存文件:")
-        print(Bart(text))
+        Bart_path = "D:\课程资料\文本数据挖掘\CodeAndModel\BartModel\BART.pth" # 默认路径
+        Bart_path = input("请输入Bart模型参数保存路径与文件:")
+        print(Bart(text, Bart_path))
     elif type=="2":
         print(TextRank(text))
     elif type=="3":
