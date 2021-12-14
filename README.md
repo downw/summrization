@@ -8,7 +8,7 @@ This is a Chinese automatic summarization code repository. We use the traditiona
 
 If you want to know BART model, you can refer to my [CSDN blog] (https://blog.csdn.net/weixin_43718786/article/details/119741580?spm=1001.2014.3001.5501)
 
-#资源下载 Download
+# 资源下载 Download
 ## training dataset download
 链接：https://pan.baidu.com/s/1DyK59idec4VJCaf3J5ssog 
 提取码 keyword：1234
